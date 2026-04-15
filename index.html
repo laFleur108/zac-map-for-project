@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>GIS Layers Map</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+  <style>
+    body { margin: 0; }
+    #map { height: 100vh; }
+  </style>
+</head>
+
+<body>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+var map = L.map('map').setView([48.85, 2.35], 12);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19
+}).addTo(map);
+
+
+// ---------- ФУНКЦИЯ СОЗДАНИЯ СЛОЯ ----------
+function createLayer(file, color) {
+  var layer = L.layerGroup();
+
+  fetch(file)
+    .then(r => r.json())
+    .then(data => {
+      L.geoJSON(data, {
+        pointToLayer: function (feature, latlng) {
+          return L.circleMarker(latlng, {
+            radius: 5,
+            color: color
+          });
+        },
+        onEachFeature: function (feature, layer) {
+          if (feature.properties && feature.properties.name) {
+            layer.bindPopup(feature.properties.name);
+          }
+        }
+      }).addTo(layer);
+    });
+
+  return layer;
+}
+
+
+// ---------- СЛОИ ----------
+
+var food = createLayer('food.geojson', 'red');
+var company = createLayer('company.geojson', 'black');
+var health = createLayer('health.geojson', 'blue');
+var insurance = createLayer('insurance.geojson', 'purple');
+
+var leisure_big = createLayer('leisure_big.geojson', 'orange');
+var leisure = createLayer('leisure.geojson', 'darkorange');
+
+var parking_zac = createLayer('parking_zac.geojson', 'green');
+
+var place_of_worship = createLayer('place_of_worship.geojson', 'brown');
+
+var shop_big = createLayer('shop_big.geojson', 'darkred');
+var shop = createLayer('shop.geojson', 'red');
+
+var supermarket = createLayer('supermarket.geojson', 'darkgreen');
+
+var transportcommun = createLayer('transportcommun.geojson', 'cyan');
+
+
+// ---------- ПО УМОЛЧАНИЮ ----------
+food.addTo(map);
+shop.addTo(map);
+supermarket.addTo(map);
+parking_zac.addTo(map);
+
+
+// ---------- ПЕРЕКЛЮЧАТЕЛИ ----------
+var overlays = {
+  "Food": food,
+  "Company": company,
+  "Health": health,
+  "Insurance": insurance,
+  "Leisure Big": leisure_big,
+  "Leisure": leisure,
+  "Parking ZAC": parking_zac,
+  "Place of Worship": place_of_worship,
+  "Shop Big": shop_big,
+  "Shop": shop,
+  "Supermarket": supermarket,
+  "Transport": transportcommun
+};
+
+L.control.layers(null, overlays).addTo(map);
+
+</script>
+
+</body>
+</html>
