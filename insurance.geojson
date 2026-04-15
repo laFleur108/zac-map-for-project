@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "insurance",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "full_id": "n5124065937", "osm_id": "5124065937", "osm_type": "node", "office": "insurance", "ref:FR:SIRET": "39985819000032", "name": "m.i.r.a Assurances" }, "geometry": { "type": "Point", "coordinates": [ 5.7235055, 45.1723468 ] } },
+{ "type": "Feature", "properties": { "full_id": "n6400541085", "osm_id": "6400541085", "osm_type": "node", "office": "insurance", "ref:FR:SIRET": "39985819000032", "name": "m.i.r.a" }, "geometry": { "type": "Point", "coordinates": [ 5.7229184, 45.1723728 ] } },
+{ "type": "Feature", "properties": { "full_id": "n11634470343", "osm_id": "11634470343", "osm_type": "node", "office": "insurance", "ref:FR:SIRET": null, "name": "Cabinet magassur" }, "geometry": { "type": "Point", "coordinates": [ 5.725866, 45.1752803 ] } }
+]
+}

@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "place of worship",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "full_id": "w31295614", "osm_id": "31295614", "osm_type": "way", "amenity": "place_of_worship", "wikidata": "Q60389583", "religion": "christian", "ref:FR:CEF": "38185_15", "name": "Église Saint-Paul de la Capuche", "denomination": "catholic", "building": "church", "alt_name": "Église Saint-Paul" }, "geometry": { "type": "MultiPolygon", "coordinates": [ [ [ [ 5.7224462, 45.1713831 ], [ 5.7227106, 45.1712796 ], [ 5.7225207, 45.1710367 ], [ 5.7224268, 45.1710734 ], [ 5.7222563, 45.1711401 ], [ 5.7224462, 45.1713831 ] ] ] ] } }
+]
+}
